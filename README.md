@@ -39,7 +39,47 @@
     2. Learnt different ways to split given words into characters
     3. run the function.
     4. Call the function output
-    5. 
+    5. Git Hub:
+    
+    If your local repository is not synchronized with the remote (usually called "origin"), it means your local master branch is not up to date with the master branch on the remote repository.
+
+Here's what you can do to sync your local master branch with the remote master branch:
+
+    Check Remote Status: First, ensure that your local repository is aware of the remote repository and that you have the correct remote URL configured. You can do this by running:
+
+git remote -v
+
+This command will show you the remote repositories associated with your local repository.
+
+Fetch Changes from Remote: Fetch the latest changes from the remote repository. This command will not merge the changes into your local branch; it will only download the latest changes from the remote:
+
+sql
+
+git fetch origin
+
+Merge Changes into Local Branch: Once you have fetched the changes, you can merge them into your local master branch. If you're sure you want to merge the remote master into your local master, you can do this:
+
+bash
+
+git merge origin/master
+
+Resolve Conflicts (if any): If there are any merge conflicts, Git will notify you. You'll need to resolve these conflicts manually by editing the affected files and then committing the changes.
+
+Push Changes (if desired): After merging the changes and resolving any conflicts, you might want to push your updated master branch to the remote repository to keep it in sync:
+
+perl
+
+git push origin master
+
+Verify: Verify that your local master branch is now up to date with the remote by checking the commit history or comparing the branches:
+
+bash
+
+    git log
+    git branch -vv
+
+These steps should help you synchronize your local master branch with the remote master branch. Make sure to understand the implications of fetching and merging changes, especially if you're working in a team environment.
+
     
 
 
