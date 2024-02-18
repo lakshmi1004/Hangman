@@ -1,16 +1,55 @@
-
 import random
 
 class Hangman:
+    """
+    A class representing the Hangman game.
+
+    Attributes:
+    - word_list (list): A list of words from which the secret word is chosen.
+    - num_lives (int): The number of lives the player has.
+    - list_of_guesses (list): A list to store the letters guessed by the player.
+
+    Methods:
+    - __init__: Initializes the Hangman game with the provided word list and number of lives.
+    - choose_word: Randomly selects a word from the word list as the secret word.
+    - check_guess: Checks if the guessed letter is in the secret word and updates the guessed word accordingly.
+    - ask_for_input: Prompts the player to enter a letter and validates the input.
+    - play_game: Executes the Hangman game, allowing the player to make guesses until they win or lose.
+    """
+
     def __init__(self, word_list, num_lives=5):
+        """
+        Initializes the Hangman game.
+
+        Args:
+        - word_list (list): A list of words from which the secret word is chosen.
+        - num_lives (int): The number of lives the player has. Default is 5.
+        """
         self.word_list = word_list
         self.num_lives = num_lives
         self.list_of_guesses = []
 
     def choose_word(self):
+        """
+        Randomly selects a word from the word list as the secret word.
+
+        Returns:
+        - str: The chosen secret word.
+        """
         return random.choice(self.word_list)
 
     def check_guess(self, guess, secretword, word_guessed):
+        """
+        Checks if the guessed letter is in the secret word and updates the guessed word accordingly.
+
+        Args:
+        - guess (str): The letter guessed by the player.
+        - secretword (str): The secret word to be guessed.
+        - word_guessed (list): The current state of the guessed word.
+
+        Returns:
+        - list: The updated state of the guessed word.
+        """
         guess = guess.lower()
         if guess in secretword:
             print("Good guess! '{}' is in the word".format(guess))
@@ -23,6 +62,12 @@ class Hangman:
         return word_guessed
 
     def ask_for_input(self):
+        """
+        Prompts the player to enter a letter and validates the input.
+
+        Returns:
+        - str: The validated letter entered by the player.
+        """
         while True:
             guess = input("Enter an alphabetical letter: ").lower()
             if len(guess) == 1 and guess.isalpha():
@@ -35,6 +80,9 @@ class Hangman:
                 print("Oops! This is not a valid input. Please enter only one alphabetical letter.")
 
     def play_game(self):
+        """
+        Executes the Hangman game, allowing the player to make guesses until they win or lose.
+        """
         word = self.choose_word()
         secret = list(word)
         word_guessed = ["_" for _ in secret]
